@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>NovaLayer | The Unified Cross-Chain Liquidity Protocol</title>
+    <meta name="description" content="NovaLayer enables instant cross-chain liquidity across major blockchains with minimal fees. $NOVA Token Launch is now live.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#030303', // Total black for depth
+                        brandAccent: '#A855F7', // Deep Electric Purple
+                        brandSecondary: '#3B82F6', // Tech Blue
+                        brandSurface: 'rgba(255, 255, 255, 0.02)', // Ultra-light glass
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'], // More modern/luxury than Inter
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'ultra-tight': '-0.05em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Precision Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #A855F7; }
+
+        /* Advanced Reveal Engine */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        /* Glassmorphism System */
+        .glass {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Animated Gradients for Buttons/Accents */
+        .bg-mesh {
+            background: radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.15) 0, transparent 50%), 
+                        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0, transparent 50%);
+        }
+
+        /* Tabular data for Tokenomics */
+        .num-fix { font-variant-numeric: tabular-nums; }
+
+        /* Section Anchor Offset */
+        [id] { scroll-margin-top: 100px; }
+    </style>
+</head>
+
+<body class="bg-brandDark text-gray-100 selection:bg-brandAccent/30 overflow-x-hidden">
+    
+    <div class="fixed inset-0 z-[-1] bg-mesh opacity-50"></div>
+    <div class="fixed inset-0 z-[-1] opacity-20" 
+         style="background-image: linear-gradient(#ffffff05 1px, transparent 1px), linear-gradient(90deg, #ffffff05 1px, transparent 1px); background-size: 60px 60px;">
+    </div>
+
+<nav class="fixed top-0 w-full z-[100] glass border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        <div class="flex items-center gap-4 group cursor-pointer">
+            <div class="relative">
+                <div class="w-11 h-11 bg-white text-brandDark flex items-center justify-center rounded-sm transition-all duration-500 group-hover:bg-brandAccent group-hover:text-white">
+                    <iconify-icon icon="solar:layers-minimalistic-bold" class="text-2xl"></iconify-icon>
+                </div>
+            </div>
+            <div class="flex flex-col border-l border-white/10 pl-4">
+                <span class="text-xl font-black tracking-tighter uppercase leading-none">NovaLayer</span>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-12">
+            <a href="#network" class="group flex flex-col items-start">
+                <span class="text-[10px] font-mono text-brandAccent opacity-0 group-hover:opacity-100 transition-opacity leading-none mb-1">01</span>
+                <span class="text-xs font-black uppercase tracking-[0.15em] text-gray-400 group-hover:text-white transition-colors">Network</span>
+            </a>
+            <a href="#system" class="group flex flex-col items-start">
+                <span class="text-[10px] font-mono text-brandAccent opacity-0 group-hover:opacity-100 transition-opacity leading-none mb-1">02</span>
+                <span class="text-xs font-black uppercase tracking-[0.15em] text-gray-400 group-hover:text-white transition-colors">Ecosystem</span>
+            </a>
+            <a href="#token" class="group flex flex-col items-start">
+                <span class="text-[10px] font-mono text-brandAccent opacity-0 group-hover:opacity-100 transition-opacity leading-none mb-1">03</span>
+                <span class="text-xs font-black uppercase tracking-[0.15em] text-gray-400 group-hover:text-white transition-colors">Tokenomics</span>
+            </a>
+            <a href="#roadmap" class="group flex flex-col items-start">
+                <span class="text-[10px] font-mono text-brandAccent opacity-0 group-hover:opacity-100 transition-opacity leading-none mb-1">04</span>
+                <span class="text-xs font-black uppercase tracking-[0.15em] text-gray-400 group-hover:text-white transition-colors">Timeline</span>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-8">
+            <div class="hidden md:flex flex-col items-end border-r border-white/10 pr-6">
+                <span class="text-[9px] font-mono text-gray-500 uppercase">Fastest Route Found</span>
+            </div>
+
+            <button class="relative px-8 py-3.5 bg-white text-brandDark text-[11px] font-black uppercase tracking-[0.2em] rounded-sm hover:bg-brandAccent hover:text-white transition-all duration-300 shadow-[6px_6px_0px_rgba(168,85,247,0.2)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]">
+                Buy $NOVA
+            </button>
+        </div>
+
+    </div>
+</nav>
+
+    <main class="relative">
+<section class="relative min-h-screen flex flex-col pt-24 overflow-hidden">
+    
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-brandAccent/5 blur-[140px] rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10 flex-grow py-12 md:py-20 text-center lg:text-left">
+        
+        <div class="reveal flex flex-col items-center lg:items-start justify-center">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent border-b border-brandAccent/30 pb-1">Network Protocol</span>
+            </div>
+
+            <h1 class="text-5xl md:text-[5.5rem] font-black tracking-ultra-tight leading-[0.9] mb-8 uppercase">
+                SEND ANY <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandAccent to-brandSecondary">ASSET</span> <br> 
+                ANYWHERE.
+            </h1>
+
+            <p class="text-lg text-gray-400 max-w-lg leading-relaxed mb-10">
+                Stop worrying about bridges. NovaLayer connects every major blockchain into one simple network. Move your money instantly, safely, and for less.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <button class="px-10 py-5 bg-white text-brandDark font-black uppercase text-xs tracking-[0.2em] rounded-sm hover:bg-brandAccent hover:text-white transition-all duration-500 shadow-xl">
+                    Buy $NOVA Token
+                </button>
+                <button class="px-10 py-5 border border-white/10 hover:border-white/30 glass text-white font-black uppercase text-xs tracking-[0.2em] rounded-sm transition-all">
+                    View Docs
+                </button>
+            </div>
+        </div>
+
+        <div class="reveal delay-200 w-full">
+            <div class="glass rounded-sm p-1 border border-white/10 shadow-2xl max-w-lg mx-auto lg:ml-auto">
+                <div class="bg-brandDark/40 rounded-sm p-8 border border-white/5">
+                    <div class="flex justify-between items-center mb-10">
+                        <div class="flex gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-brandAccent/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-white/10"></div>
+                        </div>
+                        <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest">Cross-Chain Router Active</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/5 p-5 rounded-sm border border-white/5 flex justify-between items-center">
+                            <span class="text-2xl font-black font-mono tracking-tighter">1.00</span>
+                            <div class="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-sm border border-white/10 text-xs font-bold uppercase">
+                                <iconify-icon icon="logos:ethereum-color"></iconify-icon> ETH
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center -my-8 relative z-20">
+                            <div class="w-12 h-12 bg-brandAccent text-white flex items-center justify-center rounded-sm rotate-45 shadow-[0_0_30px_rgba(168,85,247,0.4)]">
+                                <iconify-icon icon="solar:transfer-vertical-bold" class="text-xl -rotate-45"></iconify-icon>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/5 p-5 rounded-sm border border-white/5 flex justify-between items-center text-left">
+                            <span class="text-2xl font-black font-mono tracking-tighter">3,240</span>
+                            <div class="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-sm border border-white/10 text-xs font-bold uppercase">
+                                <iconify-icon icon="logos:solana"></iconify-icon> SOL
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-between items-center text-[9px] font-mono text-gray-500 uppercase tracking-widest">
+                        <span>Route: Optimized</span>
+                        <span>Fee: <span class="text-emerald-500">$0.01</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full border-t border-white/10 bg-white/[0.02] backdrop-blur-md relative z-10 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 text-center md:text-left">
+                
+                <div class="flex flex-col items-center md:items-start">
+                    <p class="text-[10px] font-black text-brandAccent uppercase tracking-[0.2em] mb-2">Market Cap</p>
+                    <p class="text-3xl font-black tracking-tighter tabular-nums">$42.8M</p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start md:border-l md:border-white/10 md:pl-12">
+                    <p class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2">Nodes Online</p>
+                    <p class="text-3xl font-black tracking-tighter tabular-nums">1,204</p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start md:border-l md:border-white/10 md:pl-12">
+                    <p class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2">Finality Speed</p>
+                    <p class="text-3xl font-black tracking-tighter tabular-nums">0.002s</p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start md:border-l md:border-white/10 md:pl-12">
+                    <p class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2">Protocol Fee</p>
+                    <p class="text-3xl font-black tracking-tighter tabular-nums">0.01%</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="network" class="relative py-32 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="max-w-2xl mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">The Current State</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                Moving assets is <br> 
+                <span class="opacity-30">currently broken.</span>
+            </h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                Before NovaLayer, moving money between blockchains was a headache. You had to trust slow bridges, pay hidden fees, and wait hours for your own money.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-1px bg-white/5 border border-white/10 rounded-sm overflow-hidden">
+            
+            <div class="bg-brandDark p-12 reveal">
+                <div class="w-12 h-12 bg-red-500/10 text-red-500 flex items-center justify-center rounded-sm mb-8">
+                    <iconify-icon icon="solar:shield-warning-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Security Risks</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Bridges are the #1 target for hackers. When you "wrap" a token, you're giving up control of your real assets to a third party.
+                </p>
+            </div>
+
+            <div class="bg-brandDark p-12 reveal" style="transition-delay: 100ms;">
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-500 flex items-center justify-center rounded-sm mb-8">
+                    <iconify-icon icon="solar:clock-circle-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Extreme Delays</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Some transfers take 10 minutes; others take 7 days. In a fast market, waiting for a bridge means missing the opportunity.
+                </p>
+            </div>
+
+            <div class="bg-brandDark p-12 reveal" style="transition-delay: 200ms;">
+                <div class="w-12 h-12 bg-blue-500/10 text-blue-500 flex items-center justify-center rounded-sm mb-8">
+                    <iconify-icon icon="solar:wad-of-money-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Wasted Fees</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    You pay to exit one chain, pay the bridge fee, and pay to enter the new chain. By the time you're done, 5% of your money is gone.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="mt-20 p-8 border border-brandAccent/20 bg-brandAccent/[0.02] flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+            <div class="flex items-center gap-6">
+                <div class="text-4xl font-black text-brandAccent">90%</div>
+                <p class="text-sm text-gray-400 font-bold uppercase tracking-widest leading-tight">
+                    Of all crypto hacks happen <br> on traditional bridges.
+                </p>
+            </div>
+            <a href="#system" class="text-xs font-black uppercase tracking-[0.2em] py-4 px-8 border border-white/10 hover:bg-white hover:text-brandDark transition-all">
+                See our Solution
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="system" class="relative py-32 bg-white/[0.01]">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">The Solution</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                ONE NETWORK. <br>
+                <span class="text-brandSecondary">ZERO FRICTION.</span>
+            </h3>
+            <p class="text-gray-400 text-lg">
+                We replaced complex bridges with a single, high-speed liquidity layer. It’s safer, faster, and works in just three simple steps.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-12 relative">
+            
+            <div class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-12"></div>
+
+            <div class="relative z-10 group reveal">
+                <div class="mb-8">
+                    <span class="text-6xl font-black text-white/5 group-hover:text-brandAccent/20 transition-colors duration-500 font-mono">01</span>
+                </div>
+                <div class="glass p-8 border border-white/5 rounded-sm group-hover:border-brandAccent/30 transition-all duration-500">
+                    <div class="w-12 h-12 bg-white text-brandDark flex items-center justify-center rounded-sm mb-6 shadow-[4px_4px_0px_rgba(168,85,247,0.3)]">
+                        <iconify-icon icon="solar:wallet-money-bold" class="text-2xl"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-black uppercase tracking-tight mb-4">Connect</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Link your preferred wallet. NovaLayer detects your balance across all chains automatically. No manual switching required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative z-10 group reveal" style="transition-delay: 100ms;">
+                <div class="mb-8">
+                    <span class="text-6xl font-black text-white/5 group-hover:text-brandSecondary/20 transition-colors duration-500 font-mono">02</span>
+                </div>
+                <div class="glass p-8 border border-white/5 rounded-sm group-hover:border-brandSecondary/30 transition-all duration-500">
+                    <div class="w-12 h-12 bg-white text-brandDark flex items-center justify-center rounded-sm mb-6 shadow-[4px_4px_0px_rgba(168,85,247,0.3)]">
+                        <iconify-icon icon="solar:transfer-horizontal-bold" class="text-2xl"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-black uppercase tracking-tight mb-4">Swap</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Choose any two tokens. Our engine finds the fastest and cheapest route instantly. What you see is exactly what you get.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative z-10 group reveal" style="transition-delay: 200ms;">
+                <div class="mb-8">
+                    <span class="text-6xl font-black text-white/5 group-hover:text-emerald-500/20 transition-colors duration-500 font-mono">03</span>
+                </div>
+                <div class="glass p-8 border border-white/5 rounded-sm group-hover:border-emerald-500/30 transition-all duration-500">
+                    <div class="w-12 h-12 bg-white text-brandDark flex items-center justify-center rounded-sm mb-6 shadow-[4px_4px_0px_rgba(168,85,247,0.3)]">
+                        <iconify-icon icon="solar:check-circle-bold" class="text-2xl"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-black uppercase tracking-tight mb-4">Settle</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Funds arrive in your destination wallet in less than 2 seconds. Secure, verified, and permanent.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-32 p-1 bg-white/5 rounded-sm reveal">
+            <div class="bg-brandDark p-8 md:p-16 border border-white/10 flex flex-col items-center text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-widest mb-8">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    No Bridges Required
+                </div>
+                <h4 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-6">Direct Chain Interaction</h4>
+                <p class="text-gray-500 max-w-2xl mb-12">
+                    Unlike traditional bridges that hold your funds in a "vault," NovaLayer interacts directly with chain liquidity. This removes the "middle-man" risk entirely.
+                </p>
+                <div class="flex flex-wrap justify-center gap-8 opacity-40">
+                    <iconify-icon icon="logos:ethereum" class="text-4xl"></iconify-icon>
+                    <iconify-icon icon="logos:solana" class="text-4xl"></iconify-icon>
+                    <iconify-icon icon="logos:bitcoin" class="text-4xl"></iconify-icon>
+                    <iconify-icon icon="logos:avalanche" class="text-4xl"></iconify-icon>
+                    <iconify-icon icon="logos:polygon" class="text-4xl"></iconify-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="product" class="relative py-32 overflow-hidden border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="max-w-3xl mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">Product Suite</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                BUILT FOR THE <br>
+                <span class="opacity-30">MODERN ECONOMY.</span>
+            </h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                NovaLayer isn't just a bridge, it's a complete infrastructure designed to make decentralized finance as easy as sending an email.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-1px bg-white/10 border border-white/10 rounded-sm overflow-hidden">
+            
+            <div class="lg:col-span-7 bg-brandDark p-8 md:p-16 reveal">
+                <div class="flex flex-col h-full">
+                    <div class="mb-12">
+                        <div class="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center rounded-sm mb-8">
+                            <iconify-icon icon="solar:transfer-vertical-bold" class="text-2xl text-brandAccent"></iconify-icon>
+                        </div>
+                        <h4 class="text-3xl font-black uppercase tracking-tighter mb-4">Instant Swaps</h4>
+                        <p class="text-gray-500 leading-relaxed max-w-md">
+                            Move your assets between chains with a single click. Our routing engine finds the best prices across the entire market so you don't have to.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-auto pt-10 border-t border-white/5">
+                        <div class="flex items-center gap-6">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full border-2 border-brandDark bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                                    <iconify-icon icon="logos:ethereum-color"></iconify-icon>
+                                </div>
+                                <div class="w-10 h-10 rounded-full border-2 border-brandDark bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                                    <iconify-icon icon="logos:solana"></iconify-icon>
+                                </div>
+                                <div class="w-10 h-10 rounded-full border-2 border-brandDark bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                                    <iconify-icon icon="logos:bitcoin"></iconify-icon>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest font-bold">100+ Chains Supported</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 grid grid-rows-2 gap-1px">
+                
+                <div class="bg-brandDark p-8 md:p-12 reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center rounded-sm mb-6">
+                        <iconify-icon icon="solar:layers-bold" class="text-xl text-brandSecondary"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-black uppercase tracking-tight mb-3">Unified Liquidity</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        We pool assets from every network into one shared layer. This means deeper markets, faster fills, and zero slippage on your trades.
+                    </p>
+                </div>
+
+                <div class="bg-brandDark p-8 md:p-12 reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center rounded-sm mb-6">
+                        <iconify-icon icon="solar:ranking-bold" class="text-xl text-emerald-500"></iconify-icon>
+                    </div>
+                    <h4 class="text-xl font-black uppercase tracking-tight mb-3">Optimized Fees</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        By batching transactions and using direct routes, we reduce gas costs by up to 80% compared to standard bridging methods.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 glass border border-white/5 flex items-center gap-4">
+                <span class="text-2xl font-black text-brandAccent">0.8s</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Average <br> Swap Speed</span>
+            </div>
+            <div class="p-6 glass border border-white/5 flex items-center gap-4">
+                <span class="text-2xl font-black text-brandAccent">$0.01</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Fixed <br> Network Fee</span>
+            </div>
+            <div class="p-6 glass border border-white/5 flex items-center gap-4">
+                <span class="text-2xl font-black text-brandAccent">24/7</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Uptime <br> Monitoring</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="system" class="relative py-32 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">Settlement Layer</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                FOUR STEPS. <br>
+                <span class="opacity-30">INSTANT FINALITY.</span>
+            </h3>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8 relative">
+            
+            <div class="reveal group">
+                <div class="relative mb-10">
+                    <div class="w-16 h-16 bg-white text-brandDark flex items-center justify-center rounded-sm font-black text-xl shadow-[4px_4px_0px_rgba(168,85,247,0.3)] group-hover:scale-105 transition-transform">
+                        01
+                    </div>
+                    <div class="hidden md:block absolute top-8 left-16 w-full h-px border-t border-dashed border-white/20 -z-10"></div>
+                </div>
+                <h4 class="text-lg font-black uppercase tracking-tight mb-4 group-hover:text-brandAccent transition-colors">Connect</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Securely link your wallet. NovaLayer’s architecture is non-custodial, you always stay in control of your keys.
+                </p>
+            </div>
+
+            <div class="reveal group" style="transition-delay: 100ms;">
+                <div class="relative mb-10">
+                    <div class="w-16 h-16 bg-white text-brandDark flex items-center justify-center rounded-sm font-black text-xl shadow-[4px_4px_0px_rgba(168,85,247,0.3)] group-hover:scale-105 transition-transform">
+                        02
+                    </div>
+                    <div class="hidden md:block absolute top-8 left-16 w-full h-px border-t border-dashed border-white/20 -z-10"></div>
+                </div>
+                <h4 class="text-lg font-black uppercase tracking-tight mb-4 group-hover:text-brandAccent transition-colors">Configure</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Select your asset and target chain. Our smart-routing engine instantly scans for the deepest liquidity.
+                </p>
+            </div>
+
+            <div class="reveal group" style="transition-delay: 200ms;">
+                <div class="relative mb-10">
+                    <div class="w-16 h-16 bg-white text-brandDark flex items-center justify-center rounded-sm font-black text-xl shadow-[4px_4px_0px_rgba(168,85,247,0.3)] group-hover:scale-105 transition-transform">
+                        03
+                    </div>
+                    <div class="hidden md:block absolute top-8 left-16 w-full h-px border-t border-dashed border-white/20 -z-10"></div>
+                </div>
+                <h4 class="text-lg font-black uppercase tracking-tight mb-4 group-hover:text-brandAccent transition-colors">Route</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    The protocol automatically moves liquidity through the most efficient path, bypassing slow manual bridges.
+                </p>
+            </div>
+
+            <div class="reveal group" style="transition-delay: 300ms;">
+                <div class="relative mb-10">
+                    <div class="w-16 h-16 bg-brandAccent text-white flex items-center justify-center rounded-sm font-black text-xl shadow-[4px_4px_0px_rgba(255,255,255,0.1)] group-hover:scale-105 transition-transform">
+                        04
+                    </div>
+                </div>
+                <h4 class="text-lg font-black uppercase tracking-tight mb-4 text-brandAccent">Receive</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Assets land in your destination wallet instantly. Transaction complete. No waiting, no wrapping.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="mt-24 py-6 border-y border-white/5 flex flex-wrap justify-center gap-x-16 gap-y-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="flex items-center gap-2">
+                <iconify-icon icon="solar:shield-check-bold" class="text-xl text-emerald-500"></iconify-icon>
+                <span class="text-[10px] font-black uppercase tracking-widest">End-to-End Encryption</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <iconify-icon icon="solar:bolt-circle-bold" class="text-xl text-brandAccent"></iconify-icon>
+                <span class="text-[10px] font-black uppercase tracking-widest">Sub-Second Finality</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <iconify-icon icon="solar:lock-password-unlocked-bold" class="text-xl text-brandSecondary"></iconify-icon>
+                <span class="text-[10px] font-black uppercase tracking-widest">Non-Custodial Design</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="token" class="relative py-32 overflow-hidden border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="max-w-3xl mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">Tokenomics</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                POWERING THE <br>
+                <span class="opacity-30">NOVALAYER ENGINE.</span>
+            </h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                The $NOVA token is more than just an asset. It is the core utility that drives security, governance, and value across every transaction on our network.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="group bg-white/[0.02] border border-white/10 p-10 rounded-sm hover:bg-white/[0.04] transition-all duration-500 reveal">
+                <div class="w-12 h-12 bg-brandAccent/10 text-brandAccent flex items-center justify-center rounded-sm mb-8 group-hover:scale-110 transition-transform">
+                    <iconify-icon icon="solar:users-group-two-rounded-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Governance</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    $NOVA holders shape the future. Vote on network upgrades, fee structures, and which new chains to integrate next.
+                </p>
+                <div class="text-[10px] font-mono text-white/20 uppercase tracking-widest">1 Token = 1 Vote</div>
+            </div>
+
+            <div class="group bg-white/[0.02] border border-white/10 p-10 rounded-sm hover:bg-white/[0.04] transition-all duration-500 reveal" style="transition-delay: 100ms;">
+                <div class="w-12 h-12 bg-brandSecondary/10 text-brandSecondary flex items-center justify-center rounded-sm mb-8 group-hover:scale-110 transition-transform">
+                    <iconify-icon icon="solar:graph-up-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Staking Rewards</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    Secure the network and earn. Stake your tokens to receive a percentage of all protocol transaction fees as a reward.
+                </p>
+                <div class="text-[10px] font-mono text-white/20 uppercase tracking-widest">Compounded Daily</div>
+            </div>
+
+            <div class="group bg-white/[0.02] border border-white/10 p-10 rounded-sm hover:bg-white/[0.04] transition-all duration-500 reveal" style="transition-delay: 200ms;">
+                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 flex items-center justify-center rounded-sm mb-8 group-hover:scale-110 transition-transform">
+                    <iconify-icon icon="solar:tag-price-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Fee Discounts</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    Active users save more. Holding $NOVA in your wallet automatically applies a tiered discount on all cross-chain swaps.
+                </p>
+                <div class="text-[10px] font-mono text-white/20 uppercase tracking-widest">Up to 50% Off</div>
+            </div>
+
+            <div class="group bg-white/[0.02] border border-white/10 p-10 rounded-sm hover:bg-white/[0.04] transition-all duration-500 reveal" style="transition-delay: 300ms;">
+                <div class="w-12 h-12 bg-blue-500/10 text-blue-500 flex items-center justify-center rounded-sm mb-8 group-hover:scale-110 transition-transform">
+                    <iconify-icon icon="solar:water-drops-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Liquidity Provision</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    Earn $NOVA by providing liquidity to our unified pools. We incentivize deep markets to ensure the fastest swaps possible.
+                </p>
+                <div class="text-[10px] font-mono text-white/20 uppercase tracking-widest">Bonus Multipliers</div>
+            </div>
+
+            <div class="group bg-white/[0.02] border border-white/10 p-10 rounded-sm hover:bg-white/[0.04] transition-all duration-500 reveal" style="transition-delay: 400ms;">
+                <div class="w-12 h-12 bg-purple-500/10 text-purple-500 flex items-center justify-center rounded-sm mb-8 group-hover:scale-110 transition-transform">
+                    <iconify-icon icon="solar:star-bold" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="text-xl font-black uppercase tracking-tight mb-4">Ecosystem Access</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    Priority access to new features, partner launches, and exclusive early-stage opportunities within the NovaLayer ecosystem.
+                </p>
+                <div class="text-[10px] font-mono text-white/20 uppercase tracking-widest">Verified Holders Only</div>
+            </div>
+
+            <div class="bg-brandAccent p-10 rounded-sm flex flex-col justify-center reveal" style="transition-delay: 500ms;">
+                <h4 class="text-2xl font-black uppercase tracking-tighter text-white mb-6">Ready to join the network?</h4>
+                <button class="w-full py-4 bg-white text-brandDark font-black uppercase text-xs tracking-widest rounded-sm hover:bg-black hover:text-white transition-all duration-300">
+                    Get $NOVA Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="tokenomics" class="relative py-32 overflow-hidden border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="max-w-3xl mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">Allocation Metrics</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                SUPPLY & <br>
+                <span class="opacity-30">DISTRIBUTION.</span>
+            </h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                NovaLayer is built on a foundation of long-term sustainability. Our tokenomics ensure decentralized ownership while incentivizing network growth and stability.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-16 items-center">
+            
+            <div class="lg:col-span-5 reveal">
+                <div class="glass p-10 rounded-sm border border-white/10 shadow-2xl">
+                    <div class="mb-10 pb-6 border-b border-white/5">
+                        <div class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-2">Total Fixed Supply</div>
+                        <div class="text-5xl font-black tracking-tighter tabular-nums">1,000,000,000</div>
+                        <div class="text-xs font-bold text-brandAccent uppercase tracking-widest mt-2">$NOVA Tokens</div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-5 bg-white/5 border border-white/10 rounded-sm mb-6">
+                        <iconify-icon icon="solar:lock-bold" class="text-2xl text-amber-500 mt-1"></iconify-icon>
+                        <div>
+                            <h4 class="text-sm font-black uppercase tracking-tight mb-1 text-white">Controlled Release</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                Team and Investor allocations are locked for 12 months, followed by a linear monthly release over 3 years.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-5 bg-white/5 border border-white/10 rounded-sm">
+                        <iconify-icon icon="solar:fire-bold" class="text-2xl text-red-500 mt-1"></iconify-icon>
+                        <div>
+                            <h4 class="text-sm font-black uppercase tracking-tight mb-1 text-white">Deflationary Model</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                A percentage of all protocol fees are used to buy back and burn $NOVA tokens, reducing the supply over time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 reveal" style="transition-delay: 200ms;">
+                <div class="relative group p-8 lg:p-16 border border-white/5 rounded-sm">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-br from-brandAccent/5 to-brandSecondary/5 blur-3xl rounded-full"></div>
+                    
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 relative z-10">
+                        
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-4 border-white/5 flex items-center justify-center text-3xl font-black text-brandAccent tabular-nums bg-brandAccent/5">
+                                40<span class="text-lg opacity-60">%</span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-black uppercase tracking-tight text-white mb-1">Ecosystem Rewards</h4>
+                                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full w-[40%] bg-brandAccent rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-4 border-white/5 flex items-center justify-center text-3xl font-black tabular-nums bg-white/5 text-white">
+                                20<span class="text-lg opacity-60">%</span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-black uppercase tracking-tight text-white mb-1">Liquidity Incentives</h4>
+                                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full w-[20%] bg-white/40 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6 opacity-60">
+                            <div class="w-16 h-16 rounded-full border-4 border-white/5 flex items-center justify-center text-3xl font-black tabular-nums bg-white/5 text-gray-400">
+                                15<span class="text-lg opacity-60">%</span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-black uppercase tracking-tight text-gray-400 mb-1">Team</h4>
+                                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full w-[15%] bg-white/10 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6 opacity-60">
+                            <div class="w-16 h-16 rounded-full border-4 border-white/5 flex items-center justify-center text-3xl font-black tabular-nums bg-white/5 text-gray-400">
+                                15<span class="text-lg opacity-60">%</span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-black uppercase tracking-tight text-gray-400 mb-1">Investors</h4>
+                                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full w-[15%] bg-white/10 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6 opacity-60">
+                            <div class="w-16 h-16 rounded-full border-4 border-white/5 flex items-center justify-center text-3xl font-black tabular-nums bg-white/5 text-gray-400">
+                                10<span class="text-lg opacity-60">%</span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-black uppercase tracking-tight text-gray-400 mb-1">Treasury</h4>
+                                <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full w-[10%] bg-white/10 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="roadmap" class="relative py-32 border-t border-white/5 overflow-hidden">
+    
+    <div class="hidden lg:block absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-brandAccent/50 via-white/10 to-transparent z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div class="text-center max-w-2xl mx-auto mb-20 lg:mb-32 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">Development</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                PROJECT <br> 
+                <span class="opacity-30">TIMELINE.</span>
+            </h3>
+        </div>
+
+        <div class="space-y-16 lg:space-y-24">
+            
+            <div class="grid lg:grid-cols-2 items-center reveal opacity-50 text-center lg:text-left">
+                <div class="lg:text-right lg:pr-12 lg:border-r border-white/10 pb-4 lg:pb-0">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-gray-500">Q4 2025</span>
+                    <h4 class="text-2xl font-black uppercase tracking-tighter mt-2">Phase 1: Research</h4>
+                </div>
+                <div class="lg:pl-12 flex flex-col items-center lg:items-start">
+                    <ul class="space-y-3 text-left">
+                        <li class="flex items-center gap-3 text-sm text-gray-400">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-emerald-500"></iconify-icon>
+                            Protocol Architecture Finalized
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400">
+                            <iconify-icon icon="solar:check-circle-bold" class="text-emerald-500"></iconify-icon>
+                            Smart Contract Audits (Internal)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 items-center reveal relative text-center lg:text-left">
+                <div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-brandAccent rounded-full shadow-[0_0_20px_rgba(168,85,247,1)] z-20 hidden lg:block"></div>
+                
+                <div class="lg:text-right lg:pr-12 lg:border-r border-brandAccent/30 pb-4 lg:pb-0">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-brandAccent font-black">Current Phase</span>
+                    <h4 class="text-3xl font-black uppercase tracking-tighter mt-2">Phase 2: Testnet</h4>
+                </div>
+                <div class="lg:pl-12 flex flex-col items-center lg:items-start">
+                    <ul class="space-y-4 text-left">
+                        <li class="flex items-center gap-3 text-sm text-white font-bold">
+                            <span class="w-1.5 h-1.5 bg-brandAccent rounded-full animate-pulse"></span>
+                            Public Beta Launch
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400">
+                            <iconify-icon icon="solar:round-arrow-right-bold" class="text-white/20"></iconify-icon>
+                            Validator Node Onboarding
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 items-center reveal text-center lg:text-left">
+                <div class="lg:text-right lg:pr-12 lg:border-r border-white/10 pb-4 lg:pb-0">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-gray-500">Upcoming</span>
+                    <h4 class="text-2xl font-black uppercase tracking-tighter mt-2">Phase 3: Launch</h4>
+                </div>
+                <div class="lg:pl-12 flex flex-col items-center lg:items-start">
+                    <ul class="space-y-3 text-left">
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 border border-white/20 rounded-full"></div>
+                            Token Generation Event ($NOVA)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 border border-white/20 rounded-full"></div>
+                            Mainnet Alpha Deployment
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 items-center reveal text-center lg:text-left">
+                <div class="lg:text-right lg:pr-12 lg:border-r border-white/10 pb-4 lg:pb-0">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-gray-500">Expansion</span>
+                    <h4 class="text-2xl font-black uppercase tracking-tighter mt-2">Phase 4: Scaling</h4>
+                </div>
+                <div class="lg:pl-12 flex flex-col items-center lg:items-start">
+                    <ul class="space-y-3 text-left">
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 border border-white/20 rounded-full"></div>
+                            Cross-Chain Governance Portal
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 border border-white/20 rounded-full"></div>
+                            Institutional Liquidity API
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="security" class="relative py-32 bg-white/[0.02] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="max-w-3xl mb-24 reveal">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-500 mb-6">Verified Architecture</h2>
+            <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-8">
+                SECURITY AT <br>
+                <span class="opacity-30">EVERY LAYER.</span>
+            </h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                Trust is built on transparency. NovaLayer undergoes rigorous third-party testing and continuous monitoring to ensure your assets are protected by the highest industry standards.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-7 reveal">
+                <div class="h-full glass p-8 md:p-12 border border-white/10 rounded-sm relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-10">
+                            <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 flex items-center justify-center rounded-sm">
+                                <iconify-icon icon="solar:shield-user-bold" class="text-2xl"></iconify-icon>
+                            </div>
+                            <span class="text-xs font-black uppercase tracking-widest text-white">Smart Contract Audits</span>
+                        </div>
+                        
+                        <h4 class="text-3xl font-black uppercase tracking-tighter mb-6">Multi-Stage Verification</h4>
+                        <p class="text-gray-500 mb-10 max-w-md">
+                            Every line of code is audited by top-tier security firms before deployment. We maintain a "Security-First" deployment cycle where no feature launches without a 100% pass rate.
+                        </p>
+
+                        <div class="flex flex-wrap gap-8 opacity-50 grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <div class="flex items-center gap-2">
+                                <iconify-icon icon="simple-icons:certik" class="text-2xl text-white"></iconify-icon>
+                                <span class="text-[10px] font-bold uppercase tracking-widest">Audit Partner 01</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <iconify-icon icon="simple-icons:hacken" class="text-2xl text-white"></iconify-icon>
+                                <span class="text-[10px] font-bold uppercase tracking-widest">Audit Partner 02</span>
+                            </div>
+                        </div>
+                    </div>
+                    <iconify-icon icon="solar:shield-check-bold" class="absolute -bottom-10 -right-10 text-[15rem] text-white/[0.02] pointer-events-none"></iconify-icon>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-8">
+                
+                <div class="reveal glass p-8 border border-white/10 rounded-sm hover:border-brandAccent/40 transition-colors" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <iconify-icon icon="solar:bug-bold" class="text-2xl text-brandAccent"></iconify-icon>
+                        <h4 class="text-lg font-black uppercase tracking-tight">Bug Bounty</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        We offer rewards up to <span class="text-white font-bold">$100k</span> for white-hat hackers to find and report vulnerabilities. Security is a community effort.
+                    </p>
+                </div>
+
+                <div class="reveal glass p-8 border border-white/10 rounded-sm hover:border-brandSecondary/40 transition-colors" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <iconify-icon icon="solar:eye-bold" class="text-2xl text-brandSecondary"></iconify-icon>
+                        <h4 class="text-lg font-black uppercase tracking-tight">Real-Time Audits</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                        Our protocol health is trackable 24/7 on-chain. We publish transparency reports monthly to keep our community informed of all network activities.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-20 py-10 border-t border-white/5 flex flex-wrap justify-between items-center gap-10 opacity-60">
+            <div class="flex flex-col">
+                <span class="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500 mb-1">Contract Status</span>
+                <span class="text-xs font-bold text-emerald-500 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> VERIFIED & IMMUTABLE
+                </span>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500 mb-1">Insurance Layer</span>
+                <span class="text-xs font-bold text-white uppercase">$50M Safu Fund</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500 mb-1">Last Audit</span>
+                <span class="text-xs font-bold text-white uppercase">April 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="community" class="relative py-32 overflow-hidden border-t border-white/5">
+    
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] border border-brandAccent/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div class="glass p-12 md:p-24 border border-white/10 rounded-sm text-center relative overflow-hidden">
+            
+            <div class="inline-flex items-center gap-3 px-4 py-2 bg-brandAccent/10 border border-brandAccent/20 rounded-full mb-10 reveal">
+                <span class="w-2 h-2 bg-brandAccent rounded-full animate-ping"></span>
+                <span class="text-[10px] font-black uppercase tracking-widest text-brandAccent">15,000+ Members Strong</span>
+            </div>
+
+            <h3 class="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-none mb-8 reveal">
+                Join the <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandAccent to-brandSecondary">Future of DeFi.</span>
+            </h3>
+
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-16 reveal" style="transition-delay: 100ms;">
+                Don't just watch the revolution—build it. Join our community of founders, engineers, and traders shaping the next generation of cross-chain liquidity.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto reveal" style="transition-delay: 200ms;">
+                
+                <a href="#" class="group flex items-center justify-between p-6 bg-white/[0.02] border border-white/10 rounded-sm hover:bg-white hover:text-brandDark transition-all duration-500">
+                    <div class="flex items-center gap-4">
+                        <iconify-icon icon="ri:twitter-x-fill" class="text-2xl"></iconify-icon>
+                        <div class="text-left">
+                            <p class="text-[10px] font-black uppercase tracking-widest opacity-50 group-hover:opacity-100">Follow us</p>
+                            <p class="font-black uppercase tracking-tighter">X / Twitter</p>
+                        </div>
+                    </div>
+                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xl opacity-0 group-hover:opacity-100 transition-all"></iconify-icon>
+                </a>
+
+                <a href="#" class="group flex items-center justify-between p-6 bg-white/[0.02] border border-white/10 rounded-sm hover:bg-[#5865F2] transition-all duration-500">
+                    <div class="flex items-center gap-4">
+                        <iconify-icon icon="ri:discord-fill" class="text-2xl"></iconify-icon>
+                        <div class="text-left">
+                            <p class="text-[10px] font-black uppercase tracking-widest opacity-50 group-hover:opacity-100">Join Chat</p>
+                            <p class="font-black uppercase tracking-tighter">Discord</p>
+                        </div>
+                    </div>
+                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xl opacity-0 group-hover:opacity-100 transition-all"></iconify-icon>
+                </a>
+
+                <a href="#" class="group flex items-center justify-between p-6 bg-white/[0.02] border border-white/10 rounded-sm hover:bg-[#26A5E4] transition-all duration-500">
+                    <div class="flex items-center gap-4">
+                        <iconify-icon icon="ri:telegram-fill" class="text-2xl"></iconify-icon>
+                        <div class="text-left">
+                            <p class="text-[10px] font-black uppercase tracking-widest opacity-50 group-hover:opacity-100">Broadcasts</p>
+                            <p class="font-black uppercase tracking-tighter">Telegram</p>
+                        </div>
+                    </div>
+                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xl opacity-0 group-hover:opacity-100 transition-all"></iconify-icon>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="mt-20 flex flex-wrap justify-center items-center gap-x-16 gap-y-8 opacity-20 hover:opacity-50 transition-opacity duration-700">
+            <span class="text-xs font-black uppercase tracking-[0.4em]">Github Repo</span>
+            <span class="text-xs font-black uppercase tracking-[0.4em]">Gitbook Docs</span>
+            <span class="text-xs font-black uppercase tracking-[0.4em]">Medium Blog</span>
+            <span class="text-xs font-black uppercase tracking-[0.4em]">Brand Assets</span>
+        </div>
+
+    </div>
+</section>
+
+<section id="launch" class="relative py-32 overflow-hidden">
+    
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brandAccent/10 blur-[120px] rounded-full z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="bg-brandDark border border-white/10 rounded-sm overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            
+            <div class="grid lg:grid-cols-2">
+                
+                <div class="p-12 md:p-20 border-b lg:border-b-0 lg:border-r border-white/5">
+                    <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-8">Onboarding Active</h2>
+                    <h3 class="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-8">
+                        PARTICIPATE IN THE <br>
+                        <span class="text-white">TOKEN LAUNCH.</span>
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-md">
+                        Phase 2 whitelisting is now open. Secure your priority access to the $NOVA ecosystem and join the first wave of cross-chain pioneers.
+                    </p>
+                    
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-emerald-500">
+                            <iconify-icon icon="solar:check-circle-bold"></iconify-icon>
+                            Smart Contracts Verified
+                        </div>
+                        <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white/40">
+                            <iconify-icon icon="solar:lock-keyhole-bold"></iconify-icon>
+                            Whitelisting Ends in 72 Hours
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-12 md:p-20 bg-white/[0.01] flex flex-col justify-center">
+                    <div class="space-y-6">
+                        
+                        <button class="w-full group relative p-6 bg-white text-brandDark overflow-hidden rounded-sm transition-all duration-500 hover:bg-brandAccent hover:text-white">
+                            <div class="relative z-10 flex items-center justify-between">
+                                <span class="text-sm font-black uppercase tracking-[0.2em]">Join the Whitelist</span>
+                                <iconify-icon icon="solar:arrow-right-bold" class="text-xl group-hover:translate-x-2 transition-transform"></iconify-icon>
+                            </div>
+                        </button>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-sm hover:bg-white/5 transition-all group">
+                                <iconify-icon icon="solar:document-text-bold" class="text-2xl mb-3 text-gray-500 group-hover:text-white"></iconify-icon>
+                                <span class="text-[10px] font-black uppercase tracking-widest">Read Litepaper</span>
+                            </a>
+                            <a href="#" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-sm hover:bg-white/5 transition-all group">
+                                <iconify-icon icon="solar:bell-bing-bold" class="text-2xl mb-3 text-gray-500 group-hover:text-white"></iconify-icon>
+                                <span class="text-[10px] font-black uppercase tracking-widest">Follow Updates</span>
+                            </a>
+                        </div>
+
+                        <p class="text-center text-[9px] font-mono text-gray-600 uppercase tracking-widest mt-8">
+                            Registration requires a Web3 compatible wallet. <br> 
+                            Please verify the URL before connecting.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="relative py-32 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="grid lg:grid-cols-12 gap-16">
+            
+            <div class="lg:col-span-4 reveal">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandAccent mb-6">Support Center</h2>
+                <h3 class="text-4xl font-black tracking-tighter uppercase leading-none mb-8">
+                    Common <br> 
+                    <span class="opacity-30">Queries.</span>
+                </h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-10">
+                    Can't find the answer you're looking for? Join our Discord to speak directly with the engineering team.
+                </p>
+                <a href="#" class="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-white border-b border-white/20 pb-2 hover:border-brandAccent transition-all">
+                    Visit Documentation <iconify-icon icon="solar:arrow-right-up-bold"></iconify-icon>
+                </a>
+            </div>
+
+            <div class="lg:col-span-8 space-y-4 reveal" style="transition-delay: 200ms;">
+                
+                <details class="group glass border border-white/5 rounded-sm overflow-hidden transition-all">
+                    <summary class="flex items-center justify-between p-8 cursor-pointer list-none group-hover:bg-white/[0.02]">
+                        <span class="text-sm font-black uppercase tracking-tight">What is NovaLayer?</span>
+                        <iconify-icon icon="solar:add-circle-bold" class="text-xl group-open:rotate-45 transition-transform text-brandAccent"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-6">
+                        NovaLayer is a decentralized cross-chain liquidity protocol that allows users to move assets between blockchains instantly without relying on vulnerable manual bridges.
+                    </div>
+                </details>
+
+                <details class="group glass border border-white/5 rounded-sm overflow-hidden transition-all">
+                    <summary class="flex items-center justify-between p-8 cursor-pointer list-none group-hover:bg-white/[0.02]">
+                        <span class="text-sm font-black uppercase tracking-tight">When will the token launch?</span>
+                        <iconify-icon icon="solar:add-circle-bold" class="text-xl group-open:rotate-45 transition-transform text-brandAccent"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-6">
+                        The $NOVA Token Generation Event (TGE) is scheduled for Q3 2026. Whitelisted users will receive priority access 24 hours before the public launch.
+                    </div>
+                </details>
+
+                <details class="group glass border border-white/5 rounded-sm overflow-hidden transition-all">
+                    <summary class="flex items-center justify-between p-8 cursor-pointer list-none group-hover:bg-white/[0.02]">
+                        <span class="text-sm font-black uppercase tracking-tight">Which chains are supported?</span>
+                        <iconify-icon icon="solar:add-circle-bold" class="text-xl group-open:rotate-45 transition-transform text-brandAccent"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-6">
+                        At launch, we support Ethereum, Solana, Bitcoin (L2s), Avalanche, and Polygon. Our roadmap includes expansion to 20+ additional networks by EOY.
+                    </div>
+                </details>
+
+                <details class="group glass border border-white/5 rounded-sm overflow-hidden transition-all">
+                    <summary class="flex items-center justify-between p-8 cursor-pointer list-none group-hover:bg-white/[0.02]">
+                        <span class="text-sm font-black uppercase tracking-tight">Is the token audited?</span>
+                        <iconify-icon icon="solar:add-circle-bold" class="text-xl group-open:rotate-45 transition-transform text-brandAccent"></iconify-icon>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-6">
+                        Yes. Our smart contracts have been fully audited by two independent security firms. You can view the full audit reports on our Gitbook documentation.
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-brandDark pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brandAccent/30 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
+            
+            <div class="col-span-2">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-8 h-8 bg-brandAccent rounded-sm flex items-center justify-center rotate-45 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                        <iconify-icon icon="solar:bolt-bold" class="text-white -rotate-45"></iconify-icon>
+                    </div>
+                    <span class="text-xl font-black tracking-tighter uppercase">NovaLayer</span>
+                </div>
+                <p class="text-gray-500 text-sm leading-relaxed max-w-xs mb-8">
+                    Architecting the future of cross-chain liquidity. Move assets instantly, securely, and without boundaries.
+                </p>
+                <div class="flex items-center gap-4 text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="ri:twitter-x-fill" class="text-xl"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="ri:discord-fill" class="text-xl"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="ri:telegram-fill" class="text-xl"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon icon="ri:github-fill" class="text-xl"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-4">Protocol</h5>
+                <a href="#product" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Swaps</a>
+                <a href="#system" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Liquidity</a>
+                <a href="#token" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Governance</a>
+                <a href="#security" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Audits</a>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-4">Resources</h5>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Whitepaper</a>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Documentation</a>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Brand Assets</a>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">API Docs</a>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-4">Legal</h5>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Privacy Policy</a>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Terms of Use</a>
+                <a href="#" class="text-sm text-gray-500 hover:text-brandAccent transition-colors">Cookie Policy</a>
+            </div>
+
+            <div class="hidden lg:flex flex-col gap-4">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-4">Live Status</h5>
+                <div class="p-4 bg-white/[0.02] border border-white/5 rounded-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-emerald-500">All Systems Operational</span>
+                    </div>
+                    <p class="text-[9px] font-mono text-gray-600">Block height: 48,291,012</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+            <p class="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                © 2026 NovaLayer Protocol. All rights reserved. Built for the Decentralized Web.
+            </p>
+            <div class="flex items-center gap-6">
+                <span class="text-[10px] font-mono text-gray-600 uppercase tracking-widest">Network Speed: 1.2ms</span>
+                <span class="text-[10px] font-mono text-gray-600 uppercase tracking-widest">Uptime: 99.99%</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</main>
+
+    <script>
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        // Run once on load
+        window.onload = reveal;
+    </script>
+</body>
+</html>
